@@ -1,6 +1,7 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
+import About from "@/components/About";
 import Waitlist from "@/components/Waitlist";
 
 export default function Home() {
@@ -8,6 +9,7 @@ export default function Home() {
     <main className="relative">
       <Navbar />
       <Hero />
+      <About />
       <Features />
       <Waitlist />
       

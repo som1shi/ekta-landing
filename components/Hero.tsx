@@ -1,10 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function Hero() {
   const canvasRef = useRef<HTMLCanvasElement>(null);
+  const [email, setEmail] = useState("");
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const handleEmailSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (email) {
+      setIsSubmitting(true);
+      // Simulate submission
+      await new Promise((resolve) => setTimeout(resolve, 800));
+      console.log("Waitlist submission:", email);
+      setIsSubmitting(false);
+      setIsSubmitted(true);
+      setEmail("");
+      
+      // Reset after 5 seconds
+      setTimeout(() => {
+        setIsSubmitted(false);
+      }, 5000);
+    }
+  };
 
   useEffect(() => {
     const canvas = canvasRef.current;
@@ -186,19 +207,7 @@ export default function Hero() {
           </motion.div>
 
           <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-8 leading-tight">
-            <motion.span
-              className="gradient-text inline-block"
-              animate={{
-                backgroundPosition: ["0% center", "100% center", "0% center"],
-              }}
-              transition={{
-                duration: 5,
-                repeat: Infinity,
-                ease: "linear",
-              }}
-            >
-              Unify
-            </motion.span>
+            <span className="gradient-text inline-block">Unify</span>
             <br />
             <span className="text-white">XR Development</span>
           </h1>
@@ -219,62 +228,74 @@ export default function Hero() {
         </motion.p>
 
         <motion.div
-          className="flex flex-col sm:flex-row gap-6 justify-center items-center mb-16"
+          className="flex justify-center items-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.5 }}
         >
-          <button
-            onClick={scrollToWaitlist}
-            className="group relative px-10 py-5 bg-gradient-to-r from-purple-primary to-cyan-accent rounded-xl font-bold text-xl text-white overflow-hidden transition-all duration-300 hover:shadow-2xl hover:scale-105"
-          >
-            <span className="relative z-10 flex items-center">
-              Join the Waitlist
-              <svg
-                className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M13 7l5 5m0 0l-5 5m5-5H6"
+          {!isSubmitted ? (
+            <form onSubmit={handleEmailSubmit} className="w-full max-w-md">
+              <div className="relative flex items-center glass rounded-xl p-2 border border-white/20 hover:border-white/40 transition-all duration-300 backdrop-blur-xl">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Enter your email"
+                  className="flex-1 bg-transparent px-4 py-3 text-white placeholder-gray-400 focus:outline-none text-lg"
+                  required
+                  disabled={isSubmitting}
                 />
-              </svg>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-cyan-accent to-purple-primary opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-3 bg-gradient-to-r from-purple-primary to-cyan-accent rounded-lg font-bold text-white transition-all duration-300 hover:shadow-lg hover:scale-105 flex items-center gap-2 disabled:opacity-50 disabled:cursor-not-allowed"
+                >
+                  {isSubmitting ? (
+                    <>
+                      <svg className="animate-spin h-4 w-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Joining...
+                    </>
+                  ) : (
+                    <>
+                      Join Waitlist
+                      <svg
+                        className="w-4 h-4"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M13 7l5 5m0 0l-5 5m5-5H6"
+                        />
+                      </svg>
+                    </>
+                  )}
+                </button>
+              </div>
+            </form>
+          ) : (
             <motion.div
-              className="absolute inset-0 opacity-0 group-hover:opacity-100"
-              animate={{
-                background: [
-                  "radial-gradient(circle at 0% 0%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                  "radial-gradient(circle at 100% 100%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                  "radial-gradient(circle at 0% 0%, rgba(255,255,255,0.1) 0%, transparent 50%)",
-                ],
-              }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </button>
-
-          <button
-            className="group px-10 py-5 glass rounded-xl font-bold text-xl text-white transition-all duration-300 hover:bg-white/15 hover:scale-105 border border-white/10"
-            onClick={() => {
-              document.getElementById("features")?.scrollIntoView({ behavior: "smooth" });
-            }}
-          >
-            <span className="flex items-center">
-              Watch Demo
-              <svg
-                className="w-5 h-5 ml-2 group-hover:scale-110 transition-transform"
-                fill="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path d="M8 5v14l11-7z" />
-              </svg>
-            </span>
-          </button>
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="glass rounded-xl p-6 border border-white/20 backdrop-blur-xl flex items-center gap-4"
+            >
+              <div className="w-12 h-12 rounded-full bg-gradient-to-br from-purple-primary to-cyan-accent flex items-center justify-center">
+                <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                </svg>
+              </div>
+              <div>
+                <h3 className="text-xl font-bold text-white">Submitted! 🎉</h3>
+                <p className="text-gray-300 text-sm">Check your email for updates.</p>
+              </div>
+            </motion.div>
+          )}
         </motion.div>
 
         {/* Floating platform badges */}
@@ -311,24 +332,6 @@ export default function Hero() {
           ))}
         </motion.div>
       </div>
-
-      {/* Scroll indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 transform -translate-x-1/2"
-        animate={{ y: [0, 15, 0] }}
-        transition={{ duration: 2, repeat: Infinity }}
-      >
-        <div className="flex flex-col items-center gap-2">
-          <span className="text-xs text-gray-400 uppercase tracking-wider">Scroll to explore</span>
-          <div className="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center p-2">
-            <motion.div
-              className="w-1.5 h-3 bg-gradient-to-b from-purple-primary to-cyan-accent rounded-full"
-              animate={{ y: [0, 12, 0] }}
-              transition={{ duration: 2, repeat: Infinity }}
-            />
-          </div>
-        </div>
-      </motion.div>
     </section>
   );
 }

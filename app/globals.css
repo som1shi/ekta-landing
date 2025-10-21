@@ -121,3 +121,8 @@ html {
 .float {
   animation: float 6s ease-in-out infinite;
 }
+
+/* 3D perspective for cards */
+.perspective-1000 {
+  perspective: 1000px;
+}

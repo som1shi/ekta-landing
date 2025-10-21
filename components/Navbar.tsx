@@ -58,6 +58,12 @@ export default function Navbar() {
             className="hidden md:flex items-center space-x-8"
           >
             <a
+              href="#about"
+              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
+            >
+              About
+            </a>
+            <a
               href="#features"
               className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
             >
@@ -68,12 +74,6 @@ export default function Navbar() {
               className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
             >
               Waitlist
-            </a>
-            <a
-              href="#"
-              className="text-gray-300 hover:text-white transition-colors duration-300 font-medium"
-            >
-              About
             </a>
             <button
               onClick={scrollToWaitlist}
