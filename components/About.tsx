@@ -36,7 +36,7 @@ export default function About() {
             </div>
           </div>
           <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold mb-6">
-            <span className="gradient-text">Redefining XR Development</span>
+            <span className="gradient-text">Intelligent XR Development</span>
           </h2>
         </motion.div>
 
@@ -49,33 +49,33 @@ export default function About() {
           {/* Left side - Story */}
           <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
             <p>
-              Building for XR shouldn't mean choosing between platforms. Yet developers today
-              face a fragmented landscape—separate tools for Meta Quest, Apple Vision Pro,
-              HoloLens, and more.
+              Building XR experiences is complex—managing 3D spaces, interactions, performance 
+              optimization, and multiple platforms. What if you had an AI assistant that understood it all?
             </p>
             <p>
-              <span className="text-white font-semibold">Ekta changes that.</span> We're building
-              a unified development environment where you write once and deploy everywhere. No more
-              platform-specific rewrites. No more fragmented workflows.
+              <span className="text-white font-semibold">Ekta changes that.</span> We've built an 
+              AI-powered IDE specifically for XR development—like having an expert pair programmer 
+              trained on spatial computing. Write code faster with intelligent suggestions that 
+              understand 3D interactions.
             </p>
             <p>
-              Our mission is simple: <span className="text-cyan-accent font-semibold">empower developers
-              to focus on creating incredible XR experiences</span>, not wrestling with toolchains.
+              Our mission is simple: <span className="text-cyan-accent font-semibold">empower XR developers 
+              with AI that speaks their language</span>, so you can focus on creating incredible experiences.
             </p>
 
             {/* Stats */}
             <div className="grid grid-cols-3 gap-6 pt-8">
               <div className="text-center">
+                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">10x</div>
+                <div className="text-sm text-gray-400">Faster Development</div>
+              </div>
+              <div className="text-center">
                 <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">5+</div>
-                <div className="text-sm text-gray-400">Platforms</div>
+                <div className="text-sm text-gray-400">XR Platforms</div>
               </div>
               <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">1</div>
-                <div className="text-sm text-gray-400">Codebase</div>
-              </div>
-              <div className="text-center">
-                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">90+</div>
-                <div className="text-sm text-gray-400">FPS Target</div>
+                <div className="text-3xl md:text-4xl font-bold gradient-text mb-2">∞</div>
+                <div className="text-sm text-gray-400">AI Suggestions</div>
               </div>
             </div>
           </div>
@@ -85,18 +85,15 @@ export default function About() {
             {[
               {
                 title: "Our Vision",
-                description: "A world where XR development is as accessible and unified as web development.",
-                icon: "🎯",
+                description: "Make XR development as intuitive as web development with AI-powered assistance.",
               },
               {
                 title: "Our Approach",
-                description: "Developer-first tools with intelligent abstractions that don't sacrifice control.",
-                icon: "⚙️",
+                description: "AI trained on Unity, Unreal, WebXR, and native XR SDKs to understand spatial computing.",
               },
               {
                 title: "Our Promise",
-                description: "Ship faster, reach more users, and build the immersive future you envision.",
-                icon: "🚀",
+                description: "Ship immersive experiences faster with intelligent coding support that adapts to you.",
               },
             ].map((item, index) => (
               <motion.div
@@ -107,9 +104,7 @@ export default function About() {
                 className="glass rounded-xl p-6 border border-white/10 hover:bg-white/10 transition-all duration-300"
               >
                 <div className="flex items-start gap-4">
-                  <div className="flex-shrink-0 w-12 h-12 rounded-lg bg-gradient-to-br from-purple-primary to-cyan-accent flex items-center justify-center text-2xl">
-                    {item.icon}
-                  </div>
+                  <div className="flex-shrink-0 w-3 h-3 mt-1.5 rounded-full bg-gradient-to-br from-purple-primary to-cyan-accent" />
                   <div>
                     <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
                     <p className="text-gray-300 text-sm leading-relaxed">{item.description}</p>

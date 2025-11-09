@@ -19,7 +19,7 @@ export default function Home() {
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="text-center md:text-left">
               <h3 className="text-2xl font-bold gradient-text mb-2">Ekta</h3>
-              <p className="text-gray-400">Unifying XR Development</p>
+              <p className="text-gray-400">AI-Powered XR Development</p>
             </div>
             
             <div className="flex gap-8">

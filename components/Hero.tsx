@@ -206,25 +206,24 @@ export default function Hero() {
             </span>
           </motion.div>
 
-          <h1 className="text-6xl sm:text-7xl md:text-8xl lg:text-9xl font-bold mb-8 leading-tight">
-            <span className="gradient-text inline-block">Unify</span>
+          <h1 className="text-5xl sm:text-6xl md:text-7xl lg:text-8xl font-bold mb-8 leading-tight">
+            <span className="gradient-text inline-block">AI-Powered</span>
             <br />
             <span className="text-white">XR Development</span>
           </h1>
         </motion.div>
 
         <motion.p
-          className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
+          className="text-lg sm:text-xl md:text-2xl text-gray-300 mb-12 max-w-4xl mx-auto leading-relaxed"
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          The next-generation IDE for building immersive experiences.
-          <br />
+          The intelligent IDE for spatial computing.{" "}
           <span className="text-cyan-accent font-semibold">
-            Develop once, deploy everywhere
-          </span>{" "}
-          across all XR platforms.
+            Code faster with AI that understands XR
+          </span>
+          {" "}across all platforms.
         </motion.p>
 
         <motion.div
@@ -291,45 +290,11 @@ export default function Hero() {
                 </svg>
               </div>
               <div>
-                <h3 className="text-xl font-bold text-white">Submitted! 🎉</h3>
+                <h3 className="text-xl font-bold text-white">Submitted!</h3>
                 <p className="text-gray-300 text-sm">Check your email for updates.</p>
               </div>
             </motion.div>
           )}
-        </motion.div>
-
-        {/* Floating platform badges */}
-        <motion.div
-          className="flex flex-wrap justify-center gap-4 md:gap-6"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 1, delay: 0.7 }}
-        >
-          {[
-            { name: "Meta Quest", delay: 0 },
-            { name: "Apple Vision", delay: 0.5 },
-            { name: "HoloLens", delay: 1 },
-            { name: "PSVR", delay: 1.5 },
-          ].map((platform, index) => (
-            <motion.div
-              key={platform.name}
-              className="glass px-6 py-3 rounded-full backdrop-blur-md hover:bg-white/10 transition-all duration-300 cursor-pointer"
-              animate={{
-                y: [0, -15, 0],
-              }}
-              transition={{
-                duration: 3,
-                repeat: Infinity,
-                ease: "easeInOut",
-                delay: platform.delay,
-              }}
-              whileHover={{ scale: 1.1 }}
-            >
-              <span className="text-sm font-semibold bg-gradient-to-r from-purple-primary via-cyan-accent to-pink-accent bg-clip-text text-transparent">
-                {platform.name}
-              </span>
-            </motion.div>
-          ))}
         </motion.div>
       </div>
     </section>

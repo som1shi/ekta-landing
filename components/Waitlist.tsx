@@ -55,8 +55,8 @@ export default function Waitlist() {
               <span className="gradient-text">Join the Revolution</span>
             </h2>
             <p className="text-xl text-gray-300 max-w-2xl mx-auto">
-              Be among the first to experience the future of XR development.
-              Sign up for early access and exclusive updates.
+              Be among the first developers to build XR experiences with AI assistance.
+              Get early access to the future of spatial computing development.
             </p>
           </div>
 
@@ -167,7 +167,7 @@ export default function Waitlist() {
                 </svg>
               </div>
               <h3 className="text-3xl font-bold text-white mb-4">
-                Welcome to the Future! 🎉
+                Welcome to the Future
               </h3>
               <p className="text-xl text-gray-300">
                 You're on the waitlist! Check your email for confirmation.
